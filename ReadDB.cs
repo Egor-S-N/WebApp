@@ -21,27 +21,24 @@ namespace WebProject
             return new NpgsqlConnection(@"Server=localhost;Port=5432;User Id=postgres; Password=111;Database=WebDB"); 
         }
 
-        public static string tryc()
+        public static List<string> tryc()
         {
 
             using (NpgsqlConnection con=GetConnect())
-            {con.Open();
-                // if (con.State == ConnectionState.Open )
-                // {
-                //     return "Yes";
-                // }
-                // else return "No";
+            {
+                con.Open();
                 var com =  new NpgsqlCommand("SELECT*FROM users",con);
-                string s = "";
+                List<string> s = new List<string>();
                 NpgsqlDataReader dr = com.ExecuteReader();
- 
-                // Output rows
-                while (dr.Read())
-                s +=dr[1] + "\n";
- 
-         con.Close();
-                
-               
+                int ColumnCount = dr.FieldCount;
+                while(dr.Read())
+                {
+                    for (var i = 0; i < ColumnCount; i++)
+                    {
+                        s.Add(dr[i]+"");
+                    }
+                }
+                con.Close();
                 return s;
 
             }
