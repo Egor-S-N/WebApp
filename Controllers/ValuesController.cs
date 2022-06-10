@@ -25,17 +25,13 @@ namespace WebProject.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-
-
-
-          
-            return Enumerable.Range(1, 5).Select(index => new User
-            {
-                UserID = 1,
-                UserName = "Egor"
-               
-            })
-            .ToArray();
+            return ReadDB.ReadUsers();           
+        }
+        [HttpPost]
+        public IEnumerable<User> Post()
+        {
+             ReadDB.AddUser();
+             return null;
         }
     }
 }
