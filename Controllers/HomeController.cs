@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace WebProject.Controllers
 {
     [ApiExplorerSettings(IgnoreApi=true)]
@@ -12,4 +13,5 @@ namespace WebProject.Controllers
                 return View("t.cshtml");
             }
     }
+     
 }

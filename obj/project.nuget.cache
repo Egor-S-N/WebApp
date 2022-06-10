@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5BkiNJqLDtNEwaQuE40dIzHEp2fjeA6sY5vAHbkk+uJ1kIjBVgdmFJCnnvuNYS33rYEjvzr/3I6fWnuq6Yztlw==",
+  "dgSpecHash": "TFFkgkQZRdzqbzgpW5lg/PzrzZ61c4PyUhjLSGObEVQJ3t2SL3wil2sD+73c/0zHUK6znMLc0n0IpbhIATlVpA==",
   "success": true,
   "projectFilePath": "D:\\VS_PROJECTS\\WebProject\\WebProject.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\npgsql\\6.0.4\\npgsql.6.0.4.nupkg.sha512",
+    "C:\\Users\\enifa\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.7\\npgsql.entityframeworkcore.postgresql.5.0.7.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\swashbuckle.aspnetcore\\6.3.1\\swashbuckle.aspnetcore.6.3.1.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.3.1\\swashbuckle.aspnetcore.swagger.6.3.1.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.3.1\\swashbuckle.aspnetcore.swaggergen.6.3.1.nupkg.sha512",

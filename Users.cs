@@ -6,7 +6,11 @@ namespace WebProject
 {
      public class User
     {
-
+        public User(int ID, string Name)
+        {
+            UserID = ID;
+            UserName = Name;
+        }
         public int UserID{get;set;}
         public string UserName{get;set;}   
     }
