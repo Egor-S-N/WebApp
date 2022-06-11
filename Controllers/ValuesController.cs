@@ -22,16 +22,16 @@ namespace WebProject.Controllers
         }
        
 
-        [HttpGet]
-        public IEnumerable<User> Get()
-        {
-            return ReadDB.ReadUsers();           
-        }
-        [HttpPost]
-        public IEnumerable<User> Post()
-        {
-             ReadDB.AddUser();
-             return null;
-        }
+        // [HttpGet]
+        // public IEnumerable<User> Get()
+        // {
+        //     return ReadDB.ReadUsers();           
+        // }
+        // [HttpPost]
+        // public IEnumerable<User> Post()
+        // {
+        //      ReadDB.AddUser();
+        //      return null;
+        // }
     }
 }

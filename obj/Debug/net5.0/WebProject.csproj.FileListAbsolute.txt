@@ -36,7 +36,6 @@ D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\WebProject.RazorAssemblyInfo.cs
 D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\WebProject.TagHelpers.input.cache
 D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\WebProject.TagHelpers.output.cache
 D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\WebProject.RazorCoreGenerate.cache
-D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\Razor\t.cshtml.g.cs
 D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\WebProject.RazorTargetAssemblyInfo.cs
 D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\WebProject.Views.dll
 D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\WebProject.Views.pdb
@@ -51,3 +50,5 @@ D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relatio
 D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\Razor\Pages\Shared\Get.cshtml.g.cs
+D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\Razor\Pages\Shared\Post.cshtml.g.cs
