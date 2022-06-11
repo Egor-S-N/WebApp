@@ -52,3 +52,10 @@ D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.d
 D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\Razor\Pages\Shared\Get.cshtml.g.cs
 D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\Razor\Pages\Shared\Post.cshtml.g.cs
+D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\EntityFramework.dll
+D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\EntityFramework.SqlServer.dll
+D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\VS_PROJECTS\WebProject\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\VS_PROJECTS\WebProject\obj\Debug\net5.0\Razor\Views\Users\Index.cshtml.g.cs

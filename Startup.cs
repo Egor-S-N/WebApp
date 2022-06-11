@@ -12,11 +12,16 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-namespace WebProject
+using Newtonsoft.Json.Serialization;
+namespace WebProject 
 {
     public class Startup
     {
-
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        public IConfiguration Configuration { get; }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -31,6 +36,14 @@ namespace WebProject
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "web", Version = "v1" });
             });
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
+                 = new DefaultContractResolver());
 
         }
     
@@ -38,14 +51,16 @@ namespace WebProject
         // устанавливает то, как приложение будет обрабатывать запрос 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
  if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "web v1"));
             }
-          app.UseDefaultFiles();  
-          app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();

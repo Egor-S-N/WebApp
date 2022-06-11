@@ -1,13 +1,11 @@
-
+@using WebProject;
 @model IEnumerable<WebProject.User>
 @{
     ViewBag.Title = "Index";
 }
 <h2>Таблица пользоватаелей</h2>
 
-<p>
-   
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -19,17 +17,17 @@
     <th></th>
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in ViewBag.UserName) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserID)
+                @item.UserID
+            </td>
+            <td>
+                @item.UserName
             </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })*@
         </td>
         </tr>
     }

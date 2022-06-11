@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "TFFkgkQZRdzqbzgpW5lg/PzrzZ61c4PyUhjLSGObEVQJ3t2SL3wil2sD+73c/0zHUK6znMLc0n0IpbhIATlVpA==",
+  "dgSpecHash": "3jiAs+hGC85sLbQ40V4dz3onfSmAjfAq5IBfyIHpKPu/amOkFeWFoay2ab/5Xj/sHBGVJZFZP32Ba2cqL2kbNw==",
   "success": true,
   "projectFilePath": "D:\\VS_PROJECTS\\WebProject\\WebProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\enifa\\.nuget\\packages\\entityframework\\6.0.0\\entityframework.6.0.0.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\enifa\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.17\\microsoft.aspnetcore.jsonpatch.5.0.17.nupkg.sha512",
+    "C:\\Users\\enifa\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.17\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.17.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.17\\microsoft.entityframeworkcore.5.0.17.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.17\\microsoft.entityframeworkcore.abstractions.5.0.17.nupkg.sha512",
@@ -22,6 +25,8 @@
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\enifa\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\enifa\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\npgsql\\6.0.4\\npgsql.6.0.4.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.7\\npgsql.entityframeworkcore.postgresql.5.0.7.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\swashbuckle.aspnetcore\\6.3.1\\swashbuckle.aspnetcore.6.3.1.nupkg.sha512",
@@ -33,5 +38,16 @@
     "C:\\Users\\enifa\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\enifa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"EntityFramework 6.0.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "EntityFramework",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

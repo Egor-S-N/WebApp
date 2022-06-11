@@ -14,28 +14,28 @@ namespace WebProject.Controllers
 {
     [ApiExplorerSettings(IgnoreApi=true)]
     [Route("[controller]")]
-    public class HomeController:Controller
+
+    public class HomeController : Controller
     {
-
-            private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger)
+        [HttpGet]
+        public IActionResult Login()
         {
-            _logger = logger;
+            return View();
         }
-       
-            public ActionResult Get()
-            { 
-                IEnumerable<User> users =ReadDB.ReadUsers();
-                return View(users);
-            }
+        [HttpPost]
+        public IActionResult Login(string login, string password)
+        {
+            string authData = $"Login: {login}   Password: {password}";
+            return Content(authData);
+        }
 
-       
 
-            // [HttpPost]
-            // public ActionResult Post()
-            // {
-            //     return View();
-            // }
+
+        // [HttpPost]
+        // public ActionResult Post()
+        // {
+        //     return View();
+        // }
 
 
 
