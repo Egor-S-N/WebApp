@@ -8,25 +8,23 @@ using Microsoft.AspNetCore.Http;
 using System.Data;
 using Npgsql;
 using System.Net.Http;
-
 namespace WebProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : Controller
+    public class UsersInfoController : Controller
     {
         private readonly IConfiguration configuration;
-        public UsersController(IConfiguration configuration)
+        public UsersInfoController(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
-
 
         //Просмотр данных пользователей
         [HttpGet]
         public JsonResult Get()
         {
-            string query = "select * from users";
+            string query = "select * from usersinfo";
             DataTable table = new DataTable();
             string sqldatasourec = configuration.GetConnectionString("UsersCon");
             NpgsqlDataReader dr;
@@ -43,14 +41,14 @@ namespace WebProject.Controllers
                 }
             }
 
-          
-            return  new JsonResult(table);
+
+            return new JsonResult(table);
         }
         // Добавление нового пользователя 
         [HttpPost]
-        public JsonResult Post(Models.User user)
+        public JsonResult Post(Models.UsersInfo usersInfo)
         {
-            string query = "insert into users values(@ID, @NAME)";
+            string query = "insert into  usersinfo Values(@ID, @LASTNAME,@DATA,@AGE)";
             DataTable table = new DataTable();
             string sqldatasourec = configuration.GetConnectionString("UsersCon");
             NpgsqlDataReader dr;
@@ -59,8 +57,10 @@ namespace WebProject.Controllers
                 con.Open();
                 using (NpgsqlCommand com = new NpgsqlCommand(query, con))
                 {
-                    com.Parameters.AddWithValue("@ID", user.UserID);
-                    com.Parameters.AddWithValue("@NAME", user.UserName);
+                    com.Parameters.AddWithValue("@ID", usersInfo.InfoID);
+                    com.Parameters.AddWithValue("@LASTNAME", usersInfo.LastName);
+                    com.Parameters.AddWithValue("@DATA", usersInfo.Date);
+                    com.Parameters.AddWithValue("@AGE", usersInfo.Age);
                     dr = com.ExecuteReader();
                     table.Load(dr);
 
@@ -72,13 +72,15 @@ namespace WebProject.Controllers
 
         }
 
-        // Обновление записи
+        // Обновление записи////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [HttpPut]
-        public JsonResult Put(Models.User user)
+        public JsonResult Put(Models.UsersInfo usersInfo)
         {
-            string query = "update users" +
-                "set name = @NAME" +
-                "where userid = @ID ";
+            string query = "update usersinfo" +
+                "set lastname = @NAME," +
+                "dob = @DATA," +
+                "age = @AGE" +
+                "where id = @ID";
             DataTable table = new DataTable();
             string sqldatasourec = configuration.GetConnectionString("UsersCon");
             NpgsqlDataReader dr;
@@ -87,8 +89,10 @@ namespace WebProject.Controllers
                 con.Open();
                 using (NpgsqlCommand com = new NpgsqlCommand(query, con))
                 {
-                    com.Parameters.AddWithValue("@ID", user.UserID);
-                    com.Parameters.AddWithValue("@NAME", user.UserName);
+                    com.Parameters.AddWithValue("@ID", usersInfo.InfoID);
+                    com.Parameters.AddWithValue("@LASTNAME", usersInfo.LastName);
+                    com.Parameters.AddWithValue("@DATA", usersInfo.Date);
+                    com.Parameters.AddWithValue("@AGE", usersInfo.Age);
                     dr = com.ExecuteReader();
                     table.Load(dr);
 
@@ -100,11 +104,11 @@ namespace WebProject.Controllers
 
         }
         // Обновление записи
-        [HttpDelete ("{id}")]
+        [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string query = "delete from users where" +
-                "userid = @ID";
+            string query = "delete from usersinfo where" +
+                "id = @ID";
             DataTable table = new DataTable();
             string sqldatasourec = configuration.GetConnectionString("UsersCon");
             NpgsqlDataReader dr;
@@ -124,5 +128,6 @@ namespace WebProject.Controllers
             return new JsonResult("Deleted succesfull");
 
         }
+
     }
 }

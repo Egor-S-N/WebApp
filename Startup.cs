@@ -51,9 +51,10 @@ namespace WebProject
         // устанавливает то, как приложение будет обрабатывать запрос 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
+            
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
- if (env.IsDevelopment())
+           
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
@@ -69,25 +70,13 @@ namespace WebProject
             {
                 endpoints.MapControllers();
             });
-            app.Run(async (context) =>
-            {
-               await context.Response.WriteAsync("Nothink");
-            
-            });
-
-
-      
-        }
-
-  private static void Swagger(IApplicationBuilder app)
-        {
             app.Run(async context =>
             {
-                await context.Response.WriteAsync("swagger");
+                await context.Response.WriteAsync("Clear");
             });
         }
 
-
+           
     }
     
 }

@@ -2,7 +2,7 @@ using System;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
-namespace WebProject
+namespace WebProject.Models
 {
      public class User
     {
