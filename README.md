@@ -25,9 +25,17 @@ Practic
 
 ## Описание работы
 
+
 # В проекте присутствует стартовая страница, ведущая на Swagger (сделано для удобоной работы)
 ![Screenshot_2](https://user-images.githubusercontent.com/63055406/173257402-0245f463-362d-4eb5-beff-f29bceec003d.png)
 
 # После перехода к Swagger будет доступна вся информация о взаимодействиях с БД
 
 ![Screenshot_1](https://user-images.githubusercontent.com/63055406/173257344-ed1f2869-dbaa-45ed-8799-1160fb6cbe77.png)
+
+
+
+### В  проекте находится файл с сохраненной базой данных из PostgreSql (WebDB.bacup)
+
+
+
