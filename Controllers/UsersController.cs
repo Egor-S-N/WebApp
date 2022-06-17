@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Http;
 using System.Data;
 using Npgsql;
 using System.Net.Http;
+using WebProject.DAL;
+using WebProject.Repositories.ForUsers;
+using Microsoft.EntityFrameworkCore;
+using WebProject.Models;
 
 namespace WebProject.Controllers
 {
@@ -15,114 +19,51 @@ namespace WebProject.Controllers
     [ApiController]
     public class UsersController : Controller
     {
-        private readonly IConfiguration configuration;
-        public UsersController(IConfiguration configuration)
+        private readonly IUserRepository _userRepository;
+
+        public UsersController(IUserRepository userRepository)
         {
-            this.configuration = configuration;
+            _userRepository = userRepository;
         }
-
-
-        //Просмотр данных пользователей
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetOne(int id)
+        {
+            var user = await _userRepository.Get(id);
+            if (user == null)
+                return NotFound();
+            return Ok(user);
+        }
         [HttpGet]
-        public JsonResult Get()
+        public async Task<ActionResult<IEnumerable<User>>> Get()
         {
-            string query = "select * from users";
-            DataTable table = new DataTable();
-            string sqldatasourec = configuration.GetConnectionString("UsersCon");
-            NpgsqlDataReader dr;
-            using (NpgsqlConnection con = new NpgsqlConnection(sqldatasourec))
-            {
-                con.Open();
-                using (NpgsqlCommand com = new NpgsqlCommand(query, con))
-                {
-                    dr = com.ExecuteReader();
-                    table.Load(dr);
-
-                    dr.Close();
-                    con.Close();
-                }
-            }
-
-          
-            return  new JsonResult(table);
+            var users = await _userRepository.GetAll();
+            return Ok(users);
         }
-        // Добавление нового пользователя 
         [HttpPost]
-        public JsonResult Post(Models.User user)
+        public async Task<ActionResult> Post(User user)
         {
-            string query = "insert into users values(@ID, @NAME)";
-            DataTable table = new DataTable();
-            string sqldatasourec = configuration.GetConnectionString("UsersCon");
-            NpgsqlDataReader dr;
-            using (NpgsqlConnection con = new NpgsqlConnection(sqldatasourec))
+           
+            await _userRepository.Add(user);
+            return Ok(user);
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            await _userRepository.Delete(id);
+            return Ok();
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult>Update(int id, User user)
+        {
+            User newUser = new()
             {
-                con.Open();
-                using (NpgsqlCommand com = new NpgsqlCommand(query, con))
-                {
-                    com.Parameters.AddWithValue("@ID", user.UserID);
-                    com.Parameters.AddWithValue("@NAME", user.UserName);
-                    dr = com.ExecuteReader();
-                    table.Load(dr);
-
-                    dr.Close();
-                    con.Close();
-                }
-            }
-            return new JsonResult("Added succesfull");
-
+                name = user.name
+            };
+            await _userRepository.Update(newUser);
+            return Ok();
         }
 
-        // Обновление записи
-        [HttpPut]
-        public JsonResult Put(Models.User user)
-        {
-            string query = "update users" +
-                "set name = @NAME" +
-                "where userid = @ID ";
-            DataTable table = new DataTable();
-            string sqldatasourec = configuration.GetConnectionString("UsersCon");
-            NpgsqlDataReader dr;
-            using (NpgsqlConnection con = new NpgsqlConnection(sqldatasourec))
-            {
-                con.Open();
-                using (NpgsqlCommand com = new NpgsqlCommand(query, con))
-                {
-                    com.Parameters.AddWithValue("@ID", user.UserID);
-                    com.Parameters.AddWithValue("@NAME", user.UserName);
-                    dr = com.ExecuteReader();
-                    table.Load(dr);
-
-                    dr.Close();
-                    con.Close();
-                }
-            }
-            return new JsonResult("Updated succesfull");
-
-        }
-        // Обновление записи
-        [HttpDelete ("{id}")]
-        public JsonResult Delete(int id)
-        {
-            string query = "delete from users where" +
-                "userid = @ID";
-            DataTable table = new DataTable();
-            string sqldatasourec = configuration.GetConnectionString("UsersCon");
-            NpgsqlDataReader dr;
-            using (NpgsqlConnection con = new NpgsqlConnection(sqldatasourec))
-            {
-                con.Open();
-                using (NpgsqlCommand com = new NpgsqlCommand(query, con))
-                {
-                    com.Parameters.AddWithValue("@ID", id);
-                    dr = com.ExecuteReader();
-                    table.Load(dr);
-
-                    dr.Close();
-                    con.Close();
-                }
-            }
-            return new JsonResult("Deleted succesfull");
-
-        }
+       
+      
     }
 }

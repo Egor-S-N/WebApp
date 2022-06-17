@@ -13,6 +13,9 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Serialization;
+using WebProject.DAL;
+using WebProject.Repositories.ForUsers;
+using WebProject.Repositories.ForUsersInfo;
 namespace WebProject 
 {
     public class Startup
@@ -21,34 +24,23 @@ namespace WebProject
         {
             Configuration = configuration;
         }
+
         public IConfiguration Configuration { get; }
-
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        // регистрирует сервисы, используемые приложением 
         public void ConfigureServices(IServiceCollection services)
         {
-                services.AddMvc();
-                //генерация json документа 
-                 services.AddControllers();
+            services.AddMvc();
+            //генерация json документа 
+            services.AddDbContext<DAL.DataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("UsersCon")));
+            services.AddScoped<IDataContext>(provider => provider.GetService<DataContext>());
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IInfoRepository, InfoRepository>();
+            services.AddControllersWithViews();
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "web", Version = "v1" });
             });
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            });
-            services.AddControllersWithViews().AddNewtonsoftJson(options =>
-            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
-                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
-                 = new DefaultContractResolver());
-
         }
-    
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // устанавливает то, как приложение будет обрабатывать запрос 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             
